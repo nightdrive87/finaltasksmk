@@ -80,6 +80,8 @@ public class CheckAddressStep {
 
     @And("clicks Save button to add address")
     public void clicksSaveButtonToAddAddress() {
+        WebElement saveAddressButton = driver.findElement(By.xpath("//*[@id='content']/div/div/form/footer/button"));
+        saveAddressButton.click();
     }
 
     @Then("new address is added and contains {string}, {string}, {string}, {string}, {string}, {string}")
