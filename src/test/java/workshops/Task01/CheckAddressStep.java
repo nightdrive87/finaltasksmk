@@ -42,6 +42,9 @@ public class CheckAddressStep {
     @When("user clicks on Addresses module")
     public void userClicksOnAddressesModule() {
 
+        WebElement addressesLink = driver.findElement(By.id("addresses-link"));
+        addressesLink.click();
+
     }
 
     @When("user clicks on + Create new address option")
