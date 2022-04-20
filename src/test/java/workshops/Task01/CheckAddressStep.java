@@ -49,6 +49,9 @@ public class CheckAddressStep {
 
     @When("user clicks on + Create new address option")
     public void userClicksOnCreateNewAddressOption() {
+        // ścieżka tylko do pojedynczego wyszukania dodawania adresu
+        WebElement addAddressLink = driver.findElement(By.xpath("//*[@id='content']/div[3]/a"));
+        addAddressLink.click();
     }
 
     @When("user fills form with data {string}, {string}, {string}, {string}, {string}, {string}")
