@@ -3,11 +3,13 @@ package workshops.Task02;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
+import java.io.IOException;
 
 public class BuySweaterStep {
 
@@ -110,10 +112,18 @@ public class BuySweaterStep {
     }
 
     @When("user clicks on order with an obligation to pay")
-    public void userClicksOnOrderWithAnObligationToPay() {
+    public void userClicksOnOrderWithAnObligationToPay() throws InterruptedException {
+        WebElement termsCheckbox = driver.findElement(By.name("conditions_to_approve[terms-and-conditions]"));
+        termsCheckbox.click();
+        Thread.sleep(2000);
+        WebElement SubmitButton = driver.findElement(By.xpath("//div[@id = 'payment-confirmation']/div/button"));
+        SubmitButton.click();
     }
 
     @Then("takes screenshot")
-    public void takesScreenshot() {
+    public void takesScreenshot() throws IOException {
+        // from stackoverflow 😜😎
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("c:\\tmp\\screenshot.png"));
     }
 }
