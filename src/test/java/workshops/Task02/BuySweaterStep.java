@@ -92,6 +92,8 @@ public class BuySweaterStep {
 
     @When("user confirms address")
     public void userConfirmsAddress() {
+        WebElement continueFirstButton = driver.findElement(By.className("continue"));
+        continueFirstButton.click();
     }
 
     @When("user picks delivery method")
