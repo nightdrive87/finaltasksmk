@@ -16,5 +16,5 @@ Feature: Buying sweater
     Then takes screenshot
 
     Examples:
-    | size   | quantity |
-    | M      |  5       |
+      | size | quantity |
+      | M    | 5        |
