@@ -46,6 +46,8 @@ public class BuySweaterStep {
 
     @When("user picks {string}")
     public void userPicks(String arg0) {
+        WebElement productLink = driver.findElement(By.xpath("//*[@id='content']/section/div/article[2]/div/div[1]/h3/a"));
+        productLink.click();
     }
 
     @When("user checks if there is {string} discount")
