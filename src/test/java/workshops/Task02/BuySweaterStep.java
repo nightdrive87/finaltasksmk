@@ -97,7 +97,10 @@ public class BuySweaterStep {
     }
 
     @When("user picks delivery method")
-    public void userPicksDeliveryMethod() {
+    public void userPicksDeliveryMethod() throws InterruptedException {
+        WebElement continueSecondButton = driver.findElement(By.name("confirmDeliveryOption"));
+        Thread.sleep(2000);
+        continueSecondButton.click();
     }
 
     @When("user picks payment method")
