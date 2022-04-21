@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class BuySweaterStep {
 
@@ -52,10 +53,25 @@ public class BuySweaterStep {
 
     @When("user checks if there is {string} discount")
     public void userChecksIfThereIsDiscount(String arg0) {
+        //TODO: calculate discount
+        WebElement currentPrice = driver.findElement(By.xpath("//div[@class = 'current-price']/span"));
+        WebElement regularPrice = driver.findElement(By.className("regular-price"));
+        WebElement discountLabel = driver.findElement(By.className("discount-percentage"));
+
+        System.out.println(currentPrice.getText());
+        System.out.println(regularPrice.getText());
+        System.out.println(discountLabel.getText());
     }
 
     @When("user selects {string} and {string}")
-    public void userSelectsAnd(String arg0, String arg1) {
+    public void userSelectsAnd(String size, String quantity) {
+        WebElement sizeElement = driver.findElement(By.name("group[1]"));
+        Select countrySelect = new Select(sizeElement);
+        WebElement qtyInput = driver.findElement(By.name("qty"));
+
+        countrySelect.selectByVisibleText(size);
+        qtyInput.clear();
+        qtyInput.sendKeys(quantity);
     }
 
     @When("user adds purchase to cart")
