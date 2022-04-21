@@ -3,18 +3,45 @@ package workshops.Task02;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BuySweaterStep {
+
+    private WebDriver driver;
+
     @Given("user is registered on {string} page")
-    public void userIsRegisteredOnPage(String arg0) {
+    public void userIsRegisteredOnPage(String store) {
+        // driver assignment
+        System.setProperty("webdriver.chrome.driver",
+                "src/main/resources/drivers/chromedriver.exe");
+
+        // creating new object with ChromeDriverem
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(store);        // driver assignment
     }
 
     @When("user signs in the account")
     public void userSignsInTheAccount() {
+        WebElement signInLink = driver.findElement(By.className("user-info"));
+        signInLink.click();
+
+        WebElement email = driver.findElement(By.name("email"));
+        WebElement passwd = driver.findElement(By.name("password"));
+        WebElement loginBtn = driver.findElement(By.id("submit-login"));
+        email.sendKeys("zofia@test.com");
+        passwd.sendKeys("qwerty");
+        loginBtn.click();
     }
 
     @When("user goes to homepage")
     public void userGoesToHomepage() {
+        WebElement homePageLink = driver.findElement(By.className("logo"));
+        homePageLink.click();
     }
 
     @When("user picks {string}")
