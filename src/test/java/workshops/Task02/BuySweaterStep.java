@@ -81,7 +81,13 @@ public class BuySweaterStep {
     }
 
     @When("user goes to checkout")
-    public void userGoesToCheckout() {
+    public void userGoesToCheckout() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement checkoutFirstButton = driver.findElement(By.xpath("//div[@class = 'cart-content-btn']/a"));
+        checkoutFirstButton.click();
+
+        WebElement checkoutSecondButton = driver.findElement(By.xpath("//*[@id='main']/div/div[2]/div[1]/div[2]"));
+        checkoutSecondButton.click();
     }
 
     @When("user confirms address")
