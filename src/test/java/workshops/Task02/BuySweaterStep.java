@@ -76,6 +76,8 @@ public class BuySweaterStep {
 
     @When("user adds purchase to cart")
     public void userAddsPurchaseToCart() {
+        WebElement addToCartButton = driver.findElement(By.className("add-to-cart"));
+        addToCartButton.click();
     }
 
     @When("user goes to checkout")
