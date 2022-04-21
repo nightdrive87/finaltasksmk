@@ -50,17 +50,16 @@ public class CheckAddressStep {
 
     @When("user clicks on + Create new address option")
     public void userClicksOnCreateNewAddressOption() {
-        // https://stackoverflow.com/a/9188374
-        // checking if address with "home" alias exists
+
         Boolean checkAddress = driver.findElements(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]")).size() > 0;
         System.out.println(checkAddress);
-        // in case of finding an address - delete it
+
         if (checkAddress) {
             System.out.println("Address founded - address deleted");
             WebElement deleteAddress = driver.findElement(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]/../../div[2]/a[2]"));
             deleteAddress.click();
         }
-        // if it doesn't exist - add address
+
         WebElement addAddressLink = driver.findElement(By.xpath("//*[@id='content']/div[3]/a"));
         addAddressLink.click();
     }
