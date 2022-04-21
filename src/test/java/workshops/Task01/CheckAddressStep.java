@@ -85,6 +85,11 @@ public class CheckAddressStep {
     }
 
     @Then("new address is added and contains {string}, {string}, {string}, {string}, {string}, {string}")
-    public void newAddressIsAddedAndContains(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) {
+    public void newAddressIsAddedAndContains(String alias, String address, String city, String zip_postal_code, String country, String phone) {
+        WebElement newAlias = driver.findElement(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]"));
+        WebElement newAddress = driver.findElement(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]/../address"));
+        System.out.println(newAlias.getText());
+        System.out.println(newAddress.getText());
+        //TODO do zaimplementowania sprawdzenie poprawności dodanego adresu
     }
 }
