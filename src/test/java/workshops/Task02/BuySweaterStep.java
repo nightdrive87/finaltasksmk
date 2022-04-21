@@ -105,6 +105,8 @@ public class BuySweaterStep {
 
     @When("user picks payment method")
     public void userPicksPaymentMethod() {
+        WebElement payByCheckRadioButton = driver.findElement(By.id("payment-option-1"));
+        payByCheckRadioButton.click();
     }
 
     @When("user clicks on order with an obligation to pay")
