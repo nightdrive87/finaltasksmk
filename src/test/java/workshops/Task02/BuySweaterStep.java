@@ -21,7 +21,7 @@ public class BuySweaterStep {
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver.exe");
 
-        // creating new object with ChromeDriverem
+        // creating new object with ChromeDriver
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -47,8 +47,8 @@ public class BuySweaterStep {
         homePageLink.click();
     }
 
-    @When("user picks {string}")
-    public void userPicks(String arg0) {
+    @When("user picks Hummingbird Printed Sweater")
+    public void userPicks() {
         WebElement productLink = driver.findElement(By.xpath("//*[@id='content']/section/div/article[2]/div/div[1]/h3/a"));
         productLink.click();
     }

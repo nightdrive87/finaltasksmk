@@ -4,7 +4,7 @@ Feature: Buying sweater
     Given user is registered on "https://mystore-testlab.coderslab.pl/index.php" page
     When user signs in the account
     When user goes to homepage
-    When user picks "Hummingbird Printed Sweater"
+    When user picks Hummingbird Printed Sweater
     When user checks if there is "20%" discount
     When user selects "<size>" and "<quantity>"
     When user adds purchase to cart

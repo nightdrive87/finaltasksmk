@@ -71,12 +71,7 @@ public class CheckAddressStep {
     @When("user fills form with data {string}, {string}, {string}, {string}, {string}, {string}")
     public void userFillsFormWithData(String alias, String address, String city, String zip_postal_code, String country, String phone) {
         WebElement aliasInput = driver.findElement(By.name("alias"));
-        WebElement firstNameInput = driver.findElement(By.name("firstname"));
-        WebElement lastNameInput = driver.findElement(By.name("lastname"));
-        WebElement companyInput = driver.findElement(By.name("company"));
-        WebElement vatNumberInput = driver.findElement(By.name("vat_number"));
         WebElement addressInput = driver.findElement(By.name("address1"));
-        WebElement addressComplementInput = driver.findElement(By.name("address2"));
         WebElement cityInput = driver.findElement(By.name("city"));
         WebElement zipPostalCodeInput = driver.findElement(By.name("postcode"));
         WebElement countryElement = driver.findElement(By.name("id_country"));
