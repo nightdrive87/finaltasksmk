@@ -4,11 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.Arrays;
 
 public class CheckAddressStep {
 
@@ -98,8 +101,17 @@ public class CheckAddressStep {
     public void newAddressIsAddedAndContains(String alias, String address, String city, String zip_postal_code, String country, String phone) {
         WebElement newAlias = driver.findElement(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]"));
         WebElement newAddress = driver.findElement(By.xpath("//article/div[@class='address-body']/h4[contains(text(), 'home')]/../address"));
-        System.out.println(newAlias.getText());
-        System.out.println(newAddress.getText());
-        //TODO do zaimplementowania sprawdzenie poprawności dodanego adresu
+
+        // I split text to elements in array using "enter"
+        String[] addressData = newAddress.getText().split("\n");
+        System.out.println(Arrays.toString(addressData));
+
+        // I compare each address line with each array element
+        Assert.assertEquals(newAlias.getText(),alias);
+        Assert.assertEquals(address, addressData[1]);
+        Assert.assertEquals(city, addressData[2]);
+        Assert.assertEquals(zip_postal_code, addressData[3]);
+        Assert.assertEquals(country,addressData[4]);
+        Assert.assertEquals(phone, addressData[5]);
     }
 }
