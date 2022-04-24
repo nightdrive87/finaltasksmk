@@ -87,7 +87,7 @@ public class CheckAddressStep {
         addressInput.sendKeys(address);
         cityInput.sendKeys(city);
         zipPostalCodeInput.sendKeys(zip_postal_code);
-        countrySelect.selectByValue(country);
+        countrySelect.selectByVisibleText(country);
         phoneInput.sendKeys(phone);
     }
 
@@ -107,11 +107,11 @@ public class CheckAddressStep {
         System.out.println(Arrays.toString(addressData));
 
         // I compare each address line with each array element
-        Assert.assertEquals(newAlias.getText(),alias);
+        Assert.assertEquals(newAlias.getText(), alias);
         Assert.assertEquals(address, addressData[1]);
         Assert.assertEquals(city, addressData[2]);
         Assert.assertEquals(zip_postal_code, addressData[3]);
-        Assert.assertEquals(country,addressData[4]);
+        Assert.assertEquals(country, addressData[4]);
         Assert.assertEquals(phone, addressData[5]);
     }
 }

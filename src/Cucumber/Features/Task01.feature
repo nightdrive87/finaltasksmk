@@ -11,5 +11,5 @@ Feature: Adding new address
     Then new address is added and contains "<alias>", "<address>", "<city>", "<zip_postal_code>", "<country>", "<phone>"
 
     Examples:
-      | alias | address   | city    | zip_postal_code | country | phone     |
-      | home  | Zamkowa 5 | Piastów | 05-820          | 17      | 500500500 |
+      | alias | address   | city    | zip_postal_code | country        | phone     |
+      | home  | Zamkowa 5 | Piastów | 05-820          | United Kingdom | 500500500 |
