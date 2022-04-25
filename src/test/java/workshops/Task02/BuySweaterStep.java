@@ -68,11 +68,13 @@ public class BuySweaterStep {
     @When("user selects {string} and {string}")
     public void userSelectsAnd(String size, String quantity) {
         WebElement sizeElement = driver.findElement(By.name("group[1]"));
-        Select countrySelect = new Select(sizeElement);
-        WebElement qtyInput = driver.findElement(By.name("qty"));
+        Select sizeSelect = new Select(sizeElement);
+        WebElement qtyInput = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
 
-        countrySelect.selectByVisibleText(size);
-        qtyInput.clear();
+        sizeSelect.selectByVisibleText(size);
+//        qtyInput.clear();
+        qtyInput.click();
+        qtyInput.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         qtyInput.sendKeys(quantity);
     }
 
