@@ -70,14 +70,12 @@ public class BuySweaterStep {
         WebElement sizeElement = driver.findElement(By.name("group[1]"));
         Select sizeSelect = new Select(sizeElement);
 //        WebElement qtyInput = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
-        WebElement qtyInput = driver.findElement(By.name("qty"));
-
         sizeSelect.selectByVisibleText(size);
+        WebElement qtyInput = driver.findElement(By.name("qty"));
 //        qtyInput.clear();
         qtyInput.click();
         qtyInput.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         qtyInput.sendKeys(quantity);
-
     }
 
     @When("user adds purchase to cart")
