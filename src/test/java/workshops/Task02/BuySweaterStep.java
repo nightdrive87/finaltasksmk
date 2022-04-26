@@ -69,13 +69,15 @@ public class BuySweaterStep {
     public void userSelectsAnd(String size, String quantity) {
         WebElement sizeElement = driver.findElement(By.name("group[1]"));
         Select sizeSelect = new Select(sizeElement);
-        WebElement qtyInput = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
+//        WebElement qtyInput = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
+        WebElement qtyInput = driver.findElement(By.name("qty"));
 
         sizeSelect.selectByVisibleText(size);
 //        qtyInput.clear();
         qtyInput.click();
         qtyInput.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         qtyInput.sendKeys(quantity);
+
     }
 
     @When("user adds purchase to cart")
@@ -86,7 +88,7 @@ public class BuySweaterStep {
 
     @When("user goes to checkout")
     public void userGoesToCheckout() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(2200);
         WebElement checkoutFirstButton = driver.findElement(By.xpath("//div[@class = 'cart-content-btn']/a"));
         checkoutFirstButton.click();
 

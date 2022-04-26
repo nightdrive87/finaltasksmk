@@ -23,7 +23,7 @@ public class CheckAddressStep {
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver.exe");
 
-        // creating new object with ChromeDriverem
+        // creating new object with ChromeDriver
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -102,11 +102,13 @@ public class CheckAddressStep {
         System.out.println(Arrays.toString(addressData));
 
         // I compare each address line with each array element
-        Assert.assertEquals(newAlias.getText(), alias);
+        // expected, actual
+        Assert.assertEquals(alias, newAlias.getText());
         Assert.assertEquals(address, addressData[1]);
         Assert.assertEquals(city, addressData[2]);
         Assert.assertEquals(zip_postal_code, addressData[3]);
         Assert.assertEquals(country, addressData[4]);
         Assert.assertEquals(phone, addressData[5]);
+
     }
 }
