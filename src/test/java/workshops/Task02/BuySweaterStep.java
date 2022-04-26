@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -55,7 +56,7 @@ public class BuySweaterStep {
 
     @When("user checks if there is {string} discount")
     public void userChecksIfThereIsDiscount(String arg0) {
-        //TODO: calculate discount
+
         WebElement currentPrice = driver.findElement(By.xpath("//div[@class = 'current-price']/span"));
         WebElement regularPrice = driver.findElement(By.className("regular-price"));
         WebElement discountLabel = driver.findElement(By.className("discount-percentage"));
@@ -63,6 +64,21 @@ public class BuySweaterStep {
         System.out.println(currentPrice.getText());
         System.out.println(regularPrice.getText());
         System.out.println(discountLabel.getText());
+
+        //convert string with first symbol removed to float
+        float formattedRegularPrice = Float.parseFloat(regularPrice.getText().substring(1));
+        System.out.println(formattedRegularPrice);
+
+        float formattedCurrentPrice = Float.parseFloat(currentPrice.getText().substring(1));
+        System.out.println(formattedCurrentPrice);
+
+        float formattedDiscountLabel = Float.parseFloat(discountLabel.getText().substring(5,7));
+        System.out.println(formattedDiscountLabel);
+
+        float discountedPrice = formattedRegularPrice - ((formattedDiscountLabel/100)*formattedRegularPrice);
+        // from stackoverflow "assert equals float"
+        Assert.assertEquals(formattedCurrentPrice, discountedPrice, 0.0001);
+
     }
 
     @When("user selects {string} and {string}")
